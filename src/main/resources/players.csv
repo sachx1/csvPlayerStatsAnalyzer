@@ -1,0 +1,21 @@
+name,team,position,age,appearances,minutes,goals,assists
+Erling Haaland,Man City,FW,26,31,2600,27,5
+Phil Foden,Man City,MF,26,33,2450,9,7
+Rodri,Man City,MF,30,34,3000,8,9
+Gianluigi Donnarumma,Man City,GK,27,30,2700,0,0
+Bukayo Saka,Arsenal,FW,25,35,2900,14,11
+Martin Odegaard,Arsenal,MF,27,30,2500,6,10
+Broken Age,Chelsea,MF,abc,10,800,1,0
+Declan Rice,Arsenal,MF,27,36,3150,7,8
+William Saliba,Arsenal,DF,25,35,3100,2,1
+David Raya,Arsenal,GK,31,38,3420,0,0
+Mohamed Salah,Liverpool,FW,34,37,3200,22,14
+Bad Position,Arsenal,XX,24,12,900,2,1
+Virgil van Dijk,Liverpool,DF,35,36,3240,3,2
+Alexis Mac Allister,Liverpool,MF,27,33,2650,5,6
+Alisson,Liverpool,GK,34,32,2880,0,0
+Trey Nyoni,Liverpool,MF,19,0,0,0,0
+Missing Column,Liverpool,DF,29,20,1700,1
+Cole Palmer,Chelsea,MF,24,34,2850,16,9
+Moises Caicedo,Chelsea,MF,24,37,3250,3,4
+Enzo Fernandez,Chelsea,MF,25,35,2800,6,7
