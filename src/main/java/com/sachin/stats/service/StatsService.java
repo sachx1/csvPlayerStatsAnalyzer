@@ -5,6 +5,8 @@ import com.sachin.stats.model.Player;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Comparator;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StatsService {
     private final List<Player> players;
@@ -17,6 +19,10 @@ public class StatsService {
         return players.stream().map(Player::team).distinct().sorted().toList(); // Maps each player to a team, gets rid
                                                                                 // of duplicates and sorts
                                                                                 // alphabetically and creates a list
+    }
+
+    public List<String> names() {
+        return players.stream().map(Player::name).distinct().sorted().toList();
     }
 
     // Gets the max goals from the record
@@ -49,6 +55,20 @@ public class StatsService {
         var minAmtGoals = players.stream().filter(g -> g.goals() >= minGoals)
                 .sorted(Comparator.comparingInt(Player::goals).reversed()).toList();
         return minAmtGoals;
+    }
+
+    public Map<String, Integer> totalGoalsPerTeam(String team) {
+        // Command to summarize each group
+        // Map<String, List<Player>> byTeam =
+        // players.stream().collect(Collectors.groupingBy(Player::team));
+        Map<String, Integer> byTeam = players.stream()
+                .collect(Collectors.groupingBy(Player::team, Collectors.summingInt(Player::goals)));
+        // System.out.println(byTeam);
+        return byTeam;
+    }
+
+    public List<Player> playerByName(String playerName) {
+        return players.stream().filter(p -> p.name().toLowerCase().contains(playerName.toLowerCase())).toList();
     }
 
 }
