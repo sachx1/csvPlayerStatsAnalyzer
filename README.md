@@ -17,11 +17,11 @@ What you'll practice:
 
 ## Setup (Phase 0, \~30 min)
 
-- [ ] Install a current LTS JDK (21 or newer) and confirm with `java -version`
-- [ ] Create a Maven project in IntelliJ (Community is fine) or VS Code with the Java extension pack
-- [ ] Set the package to something like `com.sachin.stats`
-- [ ] Create `src/main/resources/players.csv` with 15–20 rows, including 2–3 deliberately broken ones
-- [ ] Commit to a new GitHub repo
+- [x] Install a current LTS JDK (21 or newer) and confirm with `java -version`
+- [x] Create a Maven project in IntelliJ (Community is fine) or VS Code with the Java extension pack
+- [x] Set the package to something like `com.sachin.stats`
+- [x] Create `src/main/resources/players.csv` with 15–20 rows, including 2–3 deliberately broken ones
+- [x] Commit to a new GitHub repo
 
 Sample CSV to start from:
 
@@ -40,26 +40,26 @@ Work through these in order; each one leaves you with something that runs.
 
 ### Phase 1: Model the data
 
-- [ ] Create a `Position` enum (GK, DF, MF, FW)
-- [ ] Create a `record Player(String name, String team, Position position, int age, int appearances, int minutes, int goals, int assists)`
-- [ ] Add a method `goalsPer90()` on the record (watch for division by zero)
-- [ ] In `main`, build 3 players by hand and print them
+- [x] Create a `Position` enum (GK, DF, MF, FW)
+- [x] Create a `record Player(String name, String team, Position position, int age, int appearances, int minutes, int goals, int assists)`
+- [x] Add a method `goalsPer90()` on the record (watch for division by zero)
+- [x] In `main`, build 3 players by hand and print them
 
 Done when: printing a `Player` shows all its fields (records give you `toString` for free).
 
 ### Phase 2: Load the CSV
 
-- [ ] Write a `PlayerLoader` class with `List<Player> load(Path path)`
-- [ ] Read lines with `Files.readAllLines`, skip the header, split on commas
-- [ ] Parse each row into a `Player` with `Integer.parseInt` and `Position.valueOf`
+- [x] Write a `PlayerLoader` class with `List<Player> load(Path path)`
+- [x] Read lines with `Files.readAllLines`, skip the header, split on commas
+- [x] Parse each row into a `Player` with `Integer.parseInt` and `Position.valueOf`
 
 Done when: all valid rows load and you print the count.
 
 ### Phase 3: Handle bad data
 
-- [ ] Wrap row parsing in try/catch for `NumberFormatException` and `IllegalArgumentException`
-- [ ] Skip bad rows and print a warning with the line number
-- [ ] Handle the file not existing (`IOException`) with a clear message
+- [x] Wrap row parsing in try/catch for `NumberFormatException` and `IllegalArgumentException`
+- [x] Skip bad rows and print a warning with the line number
+- [x] Handle the file not existing (`IOException`) with a clear message
 - [ ] Optional: create your own `InvalidRowException`
 
 Done when: the broken rows are reported and skipped, and the app doesn't crash.
@@ -69,8 +69,8 @@ Done when: the broken rows are reported and skipped, and the app doesn't crash.
 Put these in a `StatsService` class, one method each:
 
 - [ ] Top N scorers (`sorted` + `limit`)
-- [ ] Players on a given team (`filter`)
-- [ ] Total goals per team (`groupingBy` + `summingInt`) returning `Map<String, Integer>`
+- [x] Players on a given team (`filter`)
+- [x] Total goals per team (`groupingBy` + `summingInt`) returning `Map<String, Integer>`
 - [ ] Best goals-per-90 with a minimum minutes cutoff
 - [ ] Average age by position (`groupingBy` + `averagingInt`)
 - [ ] Find a player by name, returning `Optional<Player>`
@@ -80,15 +80,15 @@ Done when: each method prints sensible output from `main`.
 ### Phase 5: Add a menu
 
 - [ ] Build a `Scanner` loop with numbered options for each query, plus Quit
-- [ ] Prompt for inputs like team name or N
-- [ ] Handle invalid menu input without crashing
+- [x] Prompt for inputs like team name or N
+- [x] Handle invalid menu input without crashing
 - [ ] Format output as aligned columns with `String.format` or `printf`
 
 Done when: you can run every query from the menu and quit cleanly.
 
 ### Phase 6: Test it
 
-- [ ] Add the JUnit 5 dependency to `pom.xml`
+- [x] Add the JUnit 5 dependency to `pom.xml`
 - [ ] Test `goalsPer90` including the zero-minutes case
 - [ ] Test each `StatsService` method against a small hand-built list
 - [ ] Test that the loader skips bad rows
