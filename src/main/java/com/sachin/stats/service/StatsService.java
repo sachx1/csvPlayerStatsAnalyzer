@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Comparator;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class StatsService {
@@ -21,6 +22,7 @@ public class StatsService {
                                                                                 // alphabetically and creates a list
     }
 
+    // A list of names that is returned to the app
     public List<String> names() {
         return players.stream().map(Player::name).distinct().sorted().toList();
     }
@@ -41,11 +43,10 @@ public class StatsService {
     }
 
     // Spits out the top scorers
-    public List<Player> topScorers() {
-        // List<Integer> goals = new ArrayList<>();
-        var topScorer = players.stream().filter(g -> g.goals() >= 10).sorted(Comparator.comparingInt(Player::goals))
-                .toList();
-        return topScorer;
+    public Map<String, Integer> topScorers() {
+        Map<String, Integer> scorerMap = players.stream()
+                .collect(Collectors.groupingBy(Player::name, TreeMap::new, Collectors.summingInt(Player::goals)));
+        return scorerMap;
     }
 
     // Spits out the players who have scored the minimum amount of goals inputted by
@@ -67,6 +68,8 @@ public class StatsService {
         return byTeam;
     }
 
+    // Returns a list that is filtered by the player name, so we can search for a
+    // player
     public List<Player> playerByName(String playerName) {
         return players.stream().filter(p -> p.name().toLowerCase().contains(playerName.toLowerCase())).toList();
     }

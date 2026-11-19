@@ -68,12 +68,12 @@ public class App {
                 while (done) {
                     System.out.println(
                             "Enter the minimum amount of goals to see players who scored that amount or more, must be greater than 0");
-                    System.out.println("Type in Top to see the Top Scorers to see the top 10 scorers");
+                    System.out.println("Type in Top to see the top 10 scorers");
                     System.out.println("Press 0 to go back");
                     String goals = in.nextLine();
                     if (goals.equals("0")) {
                         done = false;
-                    } else if (!goals.equals("Top")) {
+                    } else if (!goals.equalsIgnoreCase("top")) {
                         int goalsNumber = 0;
                         try {
                             goalsNumber = Integer.parseInt(goals);
@@ -90,9 +90,14 @@ public class App {
                             System.out.println("Not a number or a whole number: " + goals);
                         }
                     } else {
-                        for (Player p : stats.topScorers()) {
-                            System.out.println(p.name() + " - Goals: " + p.goals());
-                        }
+                        Map<String, Integer> topScorerMap = stats.topScorers();
+                        System.out.println("\n");
+                        topScorerMap.entrySet().stream()
+                                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).limit(10)
+                                .forEach(e -> {
+                                    System.out.println(e.getKey() + ": " + e.getValue());
+                                });
+                        System.out.println("\n");
                     }
                 }
 
